@@ -144,7 +144,7 @@ SECRET_KEY = 'django-insecure-4!0d0rp$8gr-uvvu++v60591c#yvm2)lkonm(z0_%pe=-dwly7
 ALLOWED_HOSTS = ['https://proyectoperros-production.up.railway.app/']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  # Cambiamos a False para producción
+DEBUG = True  # Cambiamos a False para producción
 
 # Application definition
 INSTALLED_APPS = [
