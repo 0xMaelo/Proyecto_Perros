@@ -144,8 +144,6 @@ SECRET_KEY = 'django-insecure-4!0d0rp$8gr-uvvu++v60591c#yvm2)lkonm(z0_%pe=-dwly7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False  # Cambiamos a False para producción
 
-ALLOWED_HOSTS = ['maeloo.pythonanywhere.com', 'localhost', '127.0.0.1']  # Añadimos localhost para desarrollo
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
