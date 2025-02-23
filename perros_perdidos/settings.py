@@ -141,7 +141,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-4!0d0rp$8gr-uvvu++v60591c#yvm2)lkonm(z0_%pe=-dwly7'
 
-ALLOWED_HOSTS = ['*']  # Permite cualquier dominio
 ALLOWED_HOSTS = ['https://proyectoperros-production.up.railway.app/']
 
 # SECURITY WARNING: don't run with debug turned on in production!
