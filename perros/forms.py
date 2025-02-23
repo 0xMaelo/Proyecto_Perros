@@ -2,6 +2,8 @@ from django import forms
 from .models import Perro
 
 class PerroForm(forms.ModelForm):
+    fecha_perdido = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    
     class Meta:
         model = Perro
-        fields = ['nombre', 'raza', 'edad', 'color', 'fecha_perdido', 'descripcion']
+        fields = ['nombre', 'color', 'fecha_perdido', 'descripcion']

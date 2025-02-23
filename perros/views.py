@@ -1,47 +1,72 @@
-from django.shortcuts import render
-from .models import Perro
-from django.shortcuts import redirect
+# from django.shortcuts import render
+# from .models import Perro
+# from django.shortcuts import redirect
+# from django.shortcuts import render, redirect, get_object_or_404
+# from .models import Perro
+# from .forms import PerroForm
+
+# def home(request):
+#     return redirect('perros:lista_perros')
+#   # Redirige a la lista de perros
+#     perro = get_object_or_404(Perro, id=id)
+#     if request.method == 'POST':
+#         perro.delete()
+#         return redirect('perros:lista_perros')
+#     return render(request, 'perros/eliminar_perro.html', {'perro': perro})
+
+# def lista_perros(request):
+#     return render(request, 'lista_perros.html')
+
+
+# def agregar_perro(request):
+#     # Aquí iría la lógica para agregar un perro
+#     pass
+
+# def editar_perro(request, pk):  # Cambiar id por pk
+#     perro = get_object_or_404(Perro, pk=pk)  # Cambia id= por pk=
+#     # Aquí iría la lógica para editar el perro
+#     pass
+
+# def eliminar_perro(request, pk):  # Cambiar id por pk
+#     perro = get_object_or_404(Perro, pk=pk)  # Cambia id= por pk=
+#     perro.delete()
+#     return redirect('perros:lista_perros')
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Perro
 from .forms import PerroForm
 
-
 def home(request):
-    return redirect('lista_perros')  # Redirige a la lista de perros
+    return redirect('perros:lista_perros')
 
-# Vista para mostrar todos los perros perdidos
 def lista_perros(request):
-    perros = Perro.objects.all()  # Obtiene todos los perros
+    perros = Perro.objects.all()
     return render(request, 'perros/lista_perros.html', {'perros': perros})
 
-# Vista para agregar un perro perdido
 def agregar_perro(request):
     if request.method == 'POST':
-        nombre = request.POST['nombre']
-        raza = request.POST['raza']
-        edad = request.POST['edad']
-        color = request.POST['color']
-        fecha_perdido = request.POST['fecha_perdido']
-        descripcion = request.POST['descripcion']
-        Perro.objects.create(
-            nombre=nombre, raza=raza, edad=edad, color=color, fecha_perdido=fecha_perdido, descripcion=descripcion)
-    return render(request, 'perros/agregar_perro.html')
+        form = PerroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('perros:lista_perros')
+    else:
+        form = PerroForm()
+    return render(request, 'perros/agregar_perro.html', {'form': form})
 
-# Vista para editar un perro perdido
-def editar_perro(request, id):
-    perro = Perro.objects.get(id=id)
+def editar_perro(request, pk):
+    perro = get_object_or_404(Perro, pk=pk)
     if request.method == 'POST':
-        perro.nombre = request.POST['nombre']
-        perro.raza = request.POST['raza']
-        perro.edad = request.POST['edad']
-        perro.color = request.POST['color']
-        perro.fecha_perdido = request.POST['fecha_perdido']
-        perro.descripcion = request.POST['descripcion']
-        perro.save()
-    return render(request, 'perros/editar_perro.html', {'perro': perro})
+        form = PerroForm(request.POST, instance=perro)
+        if form.is_valid():
+            form.save()
+            return redirect('perros:lista_perros')
+    else:
+        form = PerroForm(instance=perro)
+    return render(request, 'perros/editar_perro.html', {'form': form})
 
-# Vista para eliminar un perro perdido
-def eliminar_perro(request, id):
-    perro = Perro.objects.get(id=id)
-    perro.delete()
-    return redirect('lista_perros')  # Redirige a la lista de perros
+def eliminar_perro(request, pk):
+    perro = get_object_or_404(Perro, pk=pk)
+    if request.method == 'POST':
+        perro.delete()
+        return redirect('perros:lista_perros')
+    return render(request, 'perros/eliminar_perro.html', {'perro': perro})
