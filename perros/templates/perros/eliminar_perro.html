@@ -2,14 +2,50 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Perro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .button-delete {
+            background-color: #f44336;
+            color: white;
+        }
+        .button-cancel {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
 </head>
 <body>
     <h1>¿Seguro que deseas eliminar a {{ perro.nombre }}?</h1>
+    
+    {% if perro.foto %}
+        <p><img src="{{ perro.foto.url }}" style="max-width: 200px; max-height: 200px;"></p>
+    {% endif %}
+    
+    <p>Esta acción no se puede deshacer.</p>
+    
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Eliminar</button>
+        <button type="submit" class="button button-delete">Eliminar</button>
     </form>
-    <a href="{% url 'perros:lista_perros' %}">Cancelar</a>
+    
+    <a href="{% url 'perros:lista_perros' %}" class="button button-cancel">Cancelar</a>
 </body>
 </html>

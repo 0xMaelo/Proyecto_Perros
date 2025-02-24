@@ -2,24 +2,98 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Perros Perdidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .perro-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+            display: flex;
+        }
+        .perro-info {
+            flex: 1;
+        }
+        .perro-foto {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+        .no-foto {
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .button-delete {
+            background-color: #f44336;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
     <h1>Perros Perdidos</h1>
-    <a href="{% url 'perros:agregar_perro' %}">Agregar Perro</a>
-    <ul>
+    <a href="{% url 'perros:agregar_perro' %}" class="button">Registrar perro perdido</a>
+ <a href="{% url 'perros:home' %}" class="button">Volver al inicio</a>
+    <div>
         {% for perro in perros %}
-            <li>
-                {{ perro.nombre }} - {{ perro.color }} - {{ perro.fecha_perdido }}
-                <a href="{% url 'perros:editar_perro' perro.pk %}">Editar</a>
-                <form action="{% url 'perros:eliminar_perro' perro.pk %}" method="post" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Eliminar</button>
-                </form>
-            </li>
+            <div class="perro-card">
+                {% if perro.foto %}
+                    <img src="{{ perro.foto.url }}" alt="Foto de {{ perro.nombre }}" class="perro-foto">
+                {% else %}
+                    <div class="perro-foto no-foto">Sin foto</div>
+                {% endif %}
+                
+                <div class="perro-info">
+                    <h2>{{ perro.nombre }}</h2>
+                    <p><strong>Raza:</strong> {{ perro.raza }}</p>
+                    <p><strong>Tamaño:</strong> {{ perro.get_tamano_display }}</p>
+                    <p><strong>Sexo:</strong> {{ perro.get_sexo_display }}</p>
+                    <p><strong>Color:</strong> {{ perro.color }}</p>
+                    {% if perro.collar == 'si' %}
+                        <p><strong>Collar:</strong> Sí - {{ perro.color_collar }}</p>
+                    {% else %}
+                        <p><strong>Collar:</strong> No</p>
+                    {% endif %}
+                    <p><strong>Perdido el:</strong> {{ perro.fecha_perdido }}</p>
+                    
+                    <div>
+                        <a href="{% url 'perros:editar_perro' perro.id %}" class="button">Editar</a>
+                        <form action="{% url 'perros:eliminar_perro' perro.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="button button-delete">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         {% empty %}
-            <li>No hay perros registrados.</li>
+            <p>No hay perros registrados.</p>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perros Perdidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Perros Perdidos</h1>
+        
+        <div>
+            <h2>Perdí a mi perro</h2>
+            <p>Registra a tu mascota perdida para que otros puedan ayudarte a encontrarlo.</p>
+            <a href="{% url 'perros:agregar_perro' %}" class="button">Registrar perro perdido</a>
+        </div>
+        
+        <div>
+            <h2>Encontré un perro</h2>
+            <p>Busca si alguna mascota ha sido reportada como perdida.</p>
+            <a href="{% url 'perros:buscar_perro' %}" class="button">Buscar perro</a>
+        </div>
+        
+        <div>
+            <h2>Ver todos los perros perdidos</h2>
+            <a href="{% url 'perros:lista_perros' %}" class="button">Ver lista</a>
+        </div>
+    </div>
+</body>
+</html>

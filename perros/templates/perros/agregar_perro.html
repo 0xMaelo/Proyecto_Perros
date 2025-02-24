@@ -2,15 +2,132 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Perro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Perro Perdido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2196F3;
+            text-decoration: none;
+        }
+        .errorlist {
+            color: red;
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Agregar Perro Perdido</h1>
-    <form method="post">
+    <h1>Registrar Perro Perdido</h1>
+    
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
+        
+        {{ form.non_field_errors }}
+        
+        <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+        {{ form.nombre }}
+        {{ form.nombre.errors }}
+        
+        <label for="{{ form.raza.id_for_label }}">Raza:</label>
+        {{ form.raza }}
+        {{ form.raza.errors }}
+        <datalist id="razas">
+            {% for raza in razas %}
+                <option value="{{ raza }}">
+            {% endfor %}
+        </datalist>
+        
+        <label for="{{ form.tamano.id_for_label }}">Tamaño:</label>
+        {{ form.tamano }}
+        {{ form.tamano.errors }}
+        
+        <label for="{{ form.sexo.id_for_label }}">Sexo:</label>
+        {{ form.sexo }}
+        {{ form.sexo.errors }}
+        
+        <label for="{{ form.color.id_for_label }}">Color:</label>
+        {{ form.color }}
+        {{ form.color.errors }}
+        
+        <label for="{{ form.collar.id_for_label }}">¿Tiene collar?:</label>
+        {{ form.collar }}
+        {{ form.collar.errors }}
+        
+        <div id="color-collar-field" style="display: none;">
+            <label for="{{ form.color_collar.id_for_label }}">Color del collar:</label>
+            {{ form.color_collar }}
+            {{ form.color_collar.errors }}
+        </div>
+        
+        <label for="{{ form.foto.id_for_label }}">Foto:</label>
+        {{ form.foto }}
+        {{ form.foto.errors }}
+        
+        <label for="{{ form.descripcion.id_for_label }}">Descripción (características físicas, marcas):</label>
+        {{ form.descripcion }}
+        {{ form.descripcion.errors }}
+        
+        <label for="{{ form.fecha_perdido.id_for_label }}">Fecha en que se perdió:</label>
+        {{ form.fecha_perdido }}
+        {{ form.fecha_perdido.errors }}
+        <input type="submit" value="Registrar">
+
     </form>
-    <a href="{% url 'perros:lista_perros' %}">Volver a la lista</a>
+    
+    <a href="{% url 'perros:home' %}">Volver al inicio</a>
+    
+    <script>
+        document.getElementById('{{ form.collar.id_for_label }}').addEventListener('change', function() {
+            var colorCollarField = document.getElementById('color-collar-field');
+            if (this.value === 'si') {
+                colorCollarField.style.display = 'block';
+            } else {
+                colorCollarField.style.display = 'none';
+            }
+        });
+        window.onload = function() {
+            var collarSelect = document.getElementById('{{ form.collar.id_for_label }}');
+            var colorCollarField = document.getElementById('color-collar-field');
+            
+            if (collarSelect.value === 'si') {
+                colorCollarField.style.display = 'block';
+            }
+        };
+    </script>
 </body>
 </html>
