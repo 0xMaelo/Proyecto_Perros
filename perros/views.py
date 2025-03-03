@@ -63,3 +63,6 @@ def eliminar_perro(request, pk):
 def buscar_perro(request):
     # por implementar...
     return render(request, 'perros/buscar_perro.html')
+
+def prueba(request):
+    return render(request, 'perros/prueba.html')
