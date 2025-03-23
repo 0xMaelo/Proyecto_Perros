@@ -16,9 +16,11 @@ class PerroForm(forms.ModelForm):
     
     fecha_perdido = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     
+    
     class Meta:
         model = Perro
-        fields = ['nombre', 'raza', 'tamano', 'sexo', 'collar', 'color_collar', 'color', 'foto', 'descripcion', 'fecha_perdido']
+        fields = ['nombre', 'raza', 'tamano', 'sexo', 'color', 'tipo_pelo', 'collar', 'color_collar', 'foto', 'descripcion', 'fecha_perdido', 'ultima_calle', 'ultima_colonia', 'ultima_alcaldia', 'ultima_latitud', 'ultima_longitud', 'microchip', 'microchip_num', 'ruac', 'ruac_clave', 'puppy', 'rabia', 'parvovirus_vacuna', 'giardia', 'cuadruple', 'quintuple', 'sextuple', 'bordetella', 'pulgas', 'displasia_cadera', 'nematodos', 'cestodos', 'giardas_coccidios', 'parvovirus_enfermo', 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']
+
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
