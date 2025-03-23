@@ -10,4 +10,5 @@ urlpatterns = [
     path('eliminar/<uuid:pk>/', views.eliminar_perro, name='eliminar_perro'),
     path('buscar/', views.buscar_perro, name='buscar_perro'),
     path('prueba/', views.prueba, name='prueba'),
+    path('agregar_perro_albergue/', views.agregar_perro_albergue, name = 'agregar_perro_albergue'),
 ]
