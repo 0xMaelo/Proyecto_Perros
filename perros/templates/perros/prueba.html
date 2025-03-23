@@ -14,6 +14,7 @@
 		}
 		.container{
 		    display: flex;
+		    margin: auto;
 		    font-size: 14px;
 		    height: 25vh;
 		    background: #d8d8d8;
@@ -21,6 +22,7 @@
 		
 		.navbar{
 		    margin: auto;
+		    display: flex;
 		    padding: 0.5rem 1.5rem;
 		    background: #272459;
 		    border-radius: 3rem;
@@ -41,7 +43,6 @@
 		    font-weight: 1000;
 		    cursor: pointer;
 		    margin: auto;
-		    /*font-style: ;*/
 		}
 		a{
 		    text-decoration: none;
@@ -115,8 +116,11 @@
         	}
 		
 		#logo{
-		    margin-left: 0px;
-		    margin-right: 0px;
+		    margin-right: auto;
+		    margin-left: auto;
+		    margin-top: auto;
+		    margin-bottom: auto;
+		    display: flex;
 		    width: 10vh;
 		    height: 10vh;
 		    border-radius: 3rem;
@@ -127,16 +131,21 @@
 		    margin-left: auto;
 		    margin-top: auto;
 		    margin-bottom: auto;
+		    display: flex;
 		    color: #fff;
 		    font-size: 23px;
 		    font-weight: 1000;
 		}
 		
 		#perfil{
-		    margin-top: 2px;
+		    margin-right: auto;
+		    margin-left: auto;
+		    margin-top: auto;
+		    margin-bottom: auto;
 		    width: 10vh;
 		    height: 10vh;
 		    border-radius: 3rem;
+		    display:flex;
 		}
 	</style>
 </head>
@@ -146,7 +155,7 @@
 			<ul class = "nav-enlaces">
 				<img src="/media/perros_fotos/1.jpg" alt="Foto de pepe" id="logo"><p id = "proyecto_nombre">Patitas a casa</p></img>
 				<li class = "nav-enlace secciones">
-					<a href = "#">Principal</a>
+					<a href = "{% url 'perros:home' %}">Principal</a>
 					<ul class = "desplegable">
 						<li>Albergues cercanos</li>
 						<li>Mapa de reportes</li>
@@ -164,7 +173,7 @@
 					<a href = "#">Adoptar</a>
 				</li>
 				<li class = "nav-enlace secciones">
-					<a href = "#">Reportar</a>
+					<a href = "{% url 'perros:agregar_perro' %}">Reportar</a>
 					<ul class = "desplegable">
 						<li>Perdido</li>
 						<li>Avistamiento</li>
