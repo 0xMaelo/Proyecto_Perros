@@ -15,16 +15,22 @@
             display: block;
             margin-top: 10px;
             font-weight: bold;
+            border-radius: 3rem;
         }
         input, select, textarea {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
             margin-bottom: 15px;
+            margin-left: 60px;
             box-sizing: border-box;
+            border-radius: 3rem;
+            display: flex;
         }
         textarea {
             height: 100px;
+            border-radius: 1rem;
+            display: flex;
         }
         button {
             background-color: #4CAF50;
@@ -33,6 +39,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            display: flex;
         }
         button:hover {
             background-color: #45a049;
@@ -43,17 +50,177 @@
             color: #2196F3;
             text-decoration: none;
         }
+        table {
+            text-align: center;
+            background-color: #00AABB;
+            margin-left: 25px;
+            color: #FFDE59;
+            font-weight: bold;
+            display: flex;
+        }
+        .container input{
+            margin-left: 10px;
+            display: flex;
+        }
         .errorlist {
             color: red;
             list-style-type: none;
             padding: 0;
             margin: 0 0 10px 0;
         }
+        .container{
+            background-color: #B5A9FF;
+            display: flex;
+            border-radius: 3rem;
+            text-align: center;
+            margin-left: 60px;
+        }
+        .navbar{
+	    margin: auto;
+	    display: flex;
+	    padding: 0.1rem 0.3rem;
+	    background: #272459;
+	    border-radius: 3rem;
+	    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	    font-size: 4px;
+	    max-width: 600px;
+	}	
+	.nav-enlaces{
+	    margin: auto;
+	    display: flex;
+	    gap: 2rem;
+	    font-size: 12px;
+	    max-width: 600px;
+	    padding: 0.1rem 0.3rem;
+	}	
+	.nav-enlace, .desplegable li{
+	    list-style: none;
+	    height: 100%;
+	    padding: 0.8rem 0.2rem;
+	    font-weight: 1000;
+	    cursor: pointer;
+	    margin: 0 auto;
+	    max-width: 600px;
+	}
+	.desplegable{
+	    position: absolute;
+	    padding: 0.5rem 0;
+	    margin: 0.5rem -0.5rem;
+	    background: #8a6ff0;
+	    color: #fff;
+	    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	    border-radius: 0.5rem;
+	    font-size: 12px;
+	    display: none;
+	    max-width: 600px;
+	}
+	.nav-enlace:hover{
+	    background-color: #8a6ff0;
+	    color: #fff;
+	    border-radius: 0.5rem;
+	}
+	.secciones:hover .desplegable{
+	    display: block;
+	}
+	.secciones a{
+	    margin: auto;
+	    display: flex;
+	    color: #fff;
+	    max-width: 600px;
+	}
+	.secciones:hover .dropdown-icon{
+	    font-size: 20px;
+	    position; relative;
+	    right: -5px;
+	    transform: rotate(0deg);
+	    transition: 0.3s ease-in-out all;
+	    max-width: 600px;
+	}
+	.secciones:hover .dropdown-icon{
+	    transform: rotate(180deg);
+	}
+	.desplegable li:hover{
+	    background: #000;
+	    color: #fff;
+	    border-radius: 0.5rem;
+	}
+	#logo{
+	    margin: auto;
+	    display: flex;
+	    width: 7vh;
+	    height: 6vh;
+	    max-width: 600px;
+	    border-radius: 3rem;
+	}
+	#proyecto_nombre{
+	    margin: auto;
+	    display: flex;
+	    color: #fff;
+	    font-size: 13px;
+	    font-weight: 1000;
+	    padding: 0.1rem 0.1rem;
+	}	
+	#perfil{
+	    margin-bottom: 14px;
+	    margin-right: 10px;
+	    margin-left: 10px;
+	    width: 6vh;
+	    height: 6vh;
+	    max-width: 600px;
+	    border-radius: 3rem;
+	    display:flex;
+	}	
+	#encabezado{
+	    display: flex;
+	    height: 25vh;
+	    background: #d8d8d8;
+	}
+        #REGISTRAR{
+            background-color: purple;
+            color: #FFF;
+            margin-left: 45px;
+            font-size: 30px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+    <div id = "encabezado">
+    <nav class = "navbar">
+	<ul class = "nav-enlaces">
+	    <img src="/media/perros_fotos/1.jpg" alt="Foto de pepe" id="logo"><p id = "proyecto_nombre">Patitas a casa</p>
+	    <li class = "nav-enlace secciones">
+	        <a href = "{% url 'perros:home' %}">Principal</a>
+	        <ul class = "desplegable">
+	            <li>Albergues cercanos</li>
+		    <li>Mapa de reportes</li>
+	        </ul>
+	    </li>
+	    <li class = "nav-enlace secciones">
+		<a href = "#">About</a>
+		<ul class = "desplegable">
+		    <li>Blog</li>
+		    <li>Docs</li>
+		    <li>Quienes somos?</li>
+		</ul>
+	    </li>
+	    <li class = "nav-enlace secciones">
+		<a href = "#">Adoptar</a>
+	    </li>
+	    <li class = "nav-enlace secciones">
+		<a href = "{% url 'perros:agregar_perro' %}">Reportar</a>
+		<ul class = "desplegable">
+		    <li>Perdido</li>
+		    <li>Avistamiento</li>
+		</ul>
+	    </li>
+	</ul>
+	<a href = "#"><img src="/media/perfil5.png" alt="Usuario" id="perfil"></a>
+    </nav>
+    </div>
     <h1>Registrar Perro Perdido</h1>
     
+    <div class = container>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         
@@ -84,6 +251,10 @@
         {{ form.color }}
         {{ form.color.errors }}
         
+        <label for = "{{ form.tipo_pelo.id_for_label }}">Tipo de pelo:</label>
+        {{ form.tipo_pelo }}
+        {{ form.tipo_pelo.errors }}
+        
         <label for="{{ form.collar.id_for_label }}">¿Tiene collar?:</label>
         {{ form.collar }}
         {{ form.collar.errors }}
@@ -94,9 +265,10 @@
             {{ form.color_collar.errors }}
         </div>
         
-        <label for="{{ form.foto.id_for_label }}">Foto:</label>
-        {{ form.foto }}
+        <label for="{{ form.foto.id_for_label }}">Fotos:</label>
+        <input type="file" name="foto" accept="image/*" id="id_foto" multiple>
         {{ form.foto.errors }}
+        
         
         <label for="{{ form.descripcion.id_for_label }}">Descripción (características físicas, marcas):</label>
         {{ form.descripcion }}
@@ -105,13 +277,125 @@
         <label for="{{ form.fecha_perdido.id_for_label }}">Fecha en que se perdió:</label>
         {{ form.fecha_perdido }}
         {{ form.fecha_perdido.errors }}
-        <input type="submit" value="Registrar">
+        
+        <p>Lugar donde se perdió</p>
+        <label for = "{{ form.ultima_calle.id_for_label }}">calle</label>
+        {{ form.ultima_calle }}
+        {{ form.ultima_calle.errors }}
+        
+        <label for = "{{ form.ultima_colonia.id_for_label }}">colonia</label>
+        {{ form.ultima_colonia }}
+        {{ form.ultima_colonia.errors }}
+        
+        <label for = "{{ form.ultima_alcaldia.id_for_label }}">alcaldia</label>
+        {{ form.ultima_alcaldia }}
+        {{ form.ultima_alcaldia.errors }}
+        
+        <label for = "{{ form.ultima_latitud.id_for_label }}">latitud</label>
+        {{ form.ultima_latitud }}
+        {{ form.ultima_latitud.errors }}
+        
+        <label for = "{{ form.ultima_longitud.id_for_label }}">longitud</label>
+        {{ form.ultima_longitud }}
+        {{ form.ultima_longitud.errors }}
+        
+        <!--De aquí hasta donde se introduce el RUAC, es el mismo formato que con collar y el color del collar-->
+        
+        <label for = "{{ form.ruac.id_for_label }}">Tiene Registro Unico de animales de Compañia (RUAC)?</label>
+        {{ form.ruac }}
+        {{ form.ruac.errors }}
+        
+        <div id="ruac-clave-field" style="display: none;">
+            <label for = "{{ form.ruac_clave.id_for_label }}">Introduzca el RUAC del perro</label>
+            {{ form.ruac_clave }}
+            {{ form.ruac_clave.errors }}
+        </div>
+        
+        <!--A partir de aquí son puros checkboxes en tablas-->
+        
+        <p>Cuadro de vacunación</p>
+            <table>
+                <tr>
+                   <td><label for = "{{ form.puppy.id_for_label }}">Puppy</label>
+                       {{ form.puppy }}
+                       {{ form.puppy.errors }}
+                   </td>
+                   <td><label for = "{{ form.rabia.id_for_label }}">Rabia</label> 
+                       {{ form.rabia }}
+                       {{ form.rabia.errors }}
+                   </td>
+                   <td><label for = "{{ form.parvovirus_vacuna.id_for_label }}">Parvovirus</label>
+                       {{ form.parvovirus_vacuna }}
+                       {{ form.parvovirus_vacuna.errors }}
+                   </td>
+                   <td><label for = "{{ form.giardia.id_for_label }}">Giardia</label> 
+                       {{ form.giardia }}
+                       {{ form.giardia.errors }}
+                   </td>
+                </tr>
+                <tr>
+                   <td><label for = "{{ form.cuadruple.id_for_label }}">Cuadruple</label>
+                       {{ form.cuadruple }}
+                       {{ form.cuadruple.errors }}
+                   </td>
+                   <td><label for = "{{ form.quintuple.id_for_label }}">Quintuple</label> 
+                       {{ form.quintuple }}
+                       {{ form.quintuple.errors }}
+                   </td>
+                   <td><label for = "{{ form.sextuple.id_for_label }}">Sextuple</label>
+                       {{ form.sextuple }}
+                       {{ form.sextuple.errors }}
+                   </td>
+                   <td><label for = "{{ form.bordetella.id_for_label }}">Bordetella</label> 
+                       {{ form.bordetella }}
+                       {{ form.bordetella.errors }}
+                   </td>
+                </tr>
+            </table>
+        
+        <p>Plaga o enfermedad</p>
+        <table>
+        	<tr>
+        	    <td><label for = "{{ form.pulgas.id_for_label }}">Pulgas</label>
+        	        {{ form.pulgas }}
+        	        {{ form.pulgas.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.displasia_cadera.id_for_label }}">Displasia de Cadera</label>
+        	        {{ form.displasia_cadera }}
+        	        {{ form.displasia_cadera.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.nematodos.id_for_label }}">Nematodos</label> <p>(lombrices intestinales)</p>
+        	        {{ form.nematodos }}
+        	        {{ form.nematodos.errors }}
+        	    </td>
+        	</tr>
+        	<tr>
+        	    <td><label for = "{{ form.cestodos.id_for_label }}">Cestodos</label>
+        	        {{ form.cestodos }}
+        	        {{ form.cestodos.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.giardas_coccidios.id_for_label }}">Giardias</label><p> o Coccidios</p>
+        	        {{ form.giardas_coccidios }}
+        	        {{ form.giardas_coccidios.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.parvovirus_enfermo.id_for_label }}">Parvovirus</label>
+        	        {{ form.parvovirus_enfermo }}
+        	        {{ form.parvovirus_enfermo.errors }}
+        	    </td>
+        	</tr>
+        </table>
+        
+        <input type="submit" value="Enviar" id = "REGISTRAR">
 
     </form>
+    </div>
     
     <a href="{% url 'perros:home' %}">Volver al inicio</a>
     
     <script>
+    	/* Para mostrar el bloque para ingresar el color de collar del perro si indica que
+    	 tiene un collar */
+    	 // Primero creamos el trigger/evento y lo que tiene que hacer cuando se active.
         document.getElementById('{{ form.collar.id_for_label }}').addEventListener('change', function() {
             var colorCollarField = document.getElementById('color-collar-field');
             if (this.value === 'si') {
@@ -120,6 +404,8 @@
                 colorCollarField.style.display = 'none';
             }
         });
+        // Luego mostramos en pantalla la salida del trigger 
+        // (que es el bloque para introducir la información del color del collar). 
         window.onload = function() {
             var collarSelect = document.getElementById('{{ form.collar.id_for_label }}');
             var colorCollarField = document.getElementById('color-collar-field');
@@ -128,6 +414,23 @@
                 colorCollarField.style.display = 'block';
             }
         };
+        
+        /* Hacemos lo mismo con el RUAC */
+        document.getElementById('{{ form.ruac.id_for_label }}').addEventListener('change', function() {
+                let ruacClaveField = document.getElementById('ruac-clave-field');
+                if(this.value === 'si'){
+                   ruacClaveField.style.display = 'block';
+                } else {
+                   ruacClaveField.style.display = 'none';
+                }
+           });
+        window.onload = function() {
+            let ruacSelection = document.getElementById('{{ form.ruac.id_for_label }}');
+            let ruacClaveField = document.getElementById('ruac-clave-field');
+            if(ruacSelection.value === 'si'){
+               ruacClaveField.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
