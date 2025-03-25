@@ -150,12 +150,12 @@ class Perro(models.Model):
     cestodos = models.BooleanField()
     giardas_coccidios = models.BooleanField()
     parvovirus_enfermo = models.BooleanField()
-    identificador = models.CharField(max_length = 10, choices = IDENTIFICADOR_CHOICES)
-    tatuaje = models.CharField(max_length = 60, null = True, blank = True)
-    estado = models.CharField(max_length = 10, choices = ESTADO_CHOICES) 
-    nombreAlbergue = models.CharField(max_length = 60, null = True, blank = True)
-    contactoAlbergue = models.PositiveIntegerField(default = 0)
-    ubicacionAlbergue = models.CharField(max_length = 120, null = True, blank = True)
+    #identificador = models.CharField(max_length = 10, choices = IDENTIFICADOR_CHOICES)
+    #tatuaje = models.CharField(max_length = 60, null = True, blank = True)
+    #estado = models.CharField(max_length = 10, choices = ESTADO_CHOICES) 
+    #nombreAlbergue = models.CharField(max_length = 60, null = True, blank = True)
+    #contactoAlbergue = models.PositiveIntegerField(default = 0)
+    #ubicacionAlbergue = models.CharField(max_length = 120, null = True, blank = True)
     
     def __str__(self):
         return self.nombre
