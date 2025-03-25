@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Perro
-from .forms import PerroForm, RAZAS_PERROS
+from .forms import PerroForm, RAZAS_PERROS, UsarioRForm, AlbergueForm
 from django.db import transaction
 
 
@@ -83,7 +83,7 @@ def prueba(request):
 
 def agregar_perro_albergue(request):
     if request.method == 'POST':
-    	form = PerroForm(request.POST, request.FILES, request.FILES.getlist('fotos'))
+    	form = AlbergueForm(request.POST, request.FILES, request.FILES.getlist('fotos'))
     	if form.is_valid():
     	    try:
     	        with transaction.atomic():
@@ -107,3 +107,31 @@ def agregar_perro_albergue(request):
         'razas': RAZAS_PERROS,
     }
     return render(request, 'perros/agregar_perro_albergue.html', context)
+
+def agregar_perro_UsuarioR(request):
+    if request.method == 'POST':
+    	form = UsarioRForm(request.POST, request.FILES, request.FILES.getlist('fotos'))
+    	print(form.is_valid())
+    	if form.is_valid():
+    	    try:
+    	        with transaction.atomic():
+    	            perro = form.save(commit=False)
+    	            if perro.collar == 'no':
+    	            	perro.color_collar = None
+    	            #if perro.microchip == 'no':
+    	            #	perro.microchip_num = None
+    	            if perro.ruac == 'no':
+    	            	perro.ruac_clave = None
+    	        
+    	        perro.save()
+    	        return redirect('perros:lista_perros')
+    	    except Exception as e:
+    	    	print(f"Error al guardar: {e}")
+    else:
+    	form = PerroForm()
+    
+    context = {
+        'form': form,
+        'razas': RAZAS_PERROS,
+    }
+    return render(request, 'perros/agregar_perro_UsuarioR.html', context)

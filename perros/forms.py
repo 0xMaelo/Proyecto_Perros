@@ -37,3 +37,49 @@ class PerroForm(forms.ModelForm):
             self.add_error('color_collar', 'Por favor indique el color del collar')
         
         return cleaned_data
+
+class AlbergueForm(forms.ModelForm):
+    raza = forms.CharField(
+        widget=forms.TextInput(attrs={'list': 'razas', 'autocomplete': 'off'})
+    )
+    
+    fecha_perdido = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    
+    
+    class Meta:
+        model = Perro
+        fields = ['nombre', 'raza', 'tamano', 'sexo', 'color', 'tipo_pelo', 'foto', 'descripcion', 'fecha_perdido', 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue', 'ruac_clave']
+        #, 'microchip', 'microchip_num']
+        #""", 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']"""
+
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+    def clean(self):
+        cleaned_data = super().clean()
+        
+        return cleaned_data
+        
+class UsarioRForm(forms.ModelForm):
+    raza = forms.CharField(
+        widget=forms.TextInput(attrs={'list': 'razas', 'autocomplete': 'off'})
+    )
+    
+    fecha_perdido = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    
+    
+    class Meta:
+        model = Perro
+        fields = ['nombre', 'raza', 'tamano', 'sexo', 'color', 'tipo_pelo', 'foto', 'descripcion', 'fecha_perdido', 'identificador', 'tatuaje', 'estado',  'ruac_clave', 'puppy', 'rabia', 'parvovirus_vacuna', 'giardia', 'cuadruple', 'quintuple', 'sextuple', 'bordetella', 'pulgas', 'displasia_cadera', 'nematodos', 'cestodos', 'giardas_coccidios', 'parvovirus_enfermo']
+        #, 'microchip', 'microchip_num']
+        #""", 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']"""
+
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+    def clean(self):
+        cleaned_data = super().clean()
+        
+        return cleaned_data
