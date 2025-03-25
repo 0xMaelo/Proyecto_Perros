@@ -103,7 +103,6 @@ class Perro(models.Model):
     
     IDENTIFICADOR_CHOICES = [
     	('ruac', 'RUAC'),
-    	('microchip', 'Microchip'),
     	('tatuaje', 'Tatuaje'),
     	('no', 'Ninguno'),
     ]
@@ -130,13 +129,11 @@ class Perro(models.Model):
     ultima_calle = models.CharField(max_length = 31, null = True, blank = True)
     ultima_colonia = models.CharField(max_length = 49)
     ultima_alcaldia = models.CharField(max_length = 29, choices = ALCALDIA_CHOICES)
-    #ultima_latitud = models.DecimalField(max_digits = 8, decimal_places = 4, validators = [MinValueValidator(0), MaxValueValidator(90)])
-    #ultima_longitud = models.DecimalField(max_digits = 7, decimal_places = 3, validators = [MinValueValidator(0), MaxValueValidator(180)])
-    ultima_latitud = models.DecimalField(max_digits = 8, decimal_places = 4)
-    ultima_longitud = models.DecimalField(max_digits = 7, decimal_places = 3)
-    microchip = models.CharField(max_length = 2, choices = COLLAR_CHOICES)
+    ultima_latitud = models.DecimalField(max_digits = 8, decimal_places = 4, validators = [MinValueValidator(0), MaxValueValidator(90)])
+    ultima_longitud = models.DecimalField(max_digits = 7, decimal_places = 3, validators = [MinValueValidator(0), MaxValueValidator(180)])
+    #microchip = models.CharField(max_length = 2, choices = COLLAR_CHOICES)
     #microchip_num = models.PositiveIntegerField(validators = [validarMicrochipNum])
-    microchip_num = models.PositiveIntegerField()
+    #microchip_num = models.PositiveIntegerField()
     ruac = models.CharField(max_length = 2, choices = COLLAR_CHOICES)
     ruac_clave = models.CharField(max_length = 8, null = True, blank = True)
     puppy = models.BooleanField()
@@ -153,12 +150,12 @@ class Perro(models.Model):
     cestodos = models.BooleanField()
     giardas_coccidios = models.BooleanField()
     parvovirus_enfermo = models.BooleanField()
-    identificador = models.CharField(max_length = 10, choices = IDENTIFICADOR_CHOICES)
-    tatuaje = models.CharField(max_length = 60, null = True, blank = True)
-    estado = models.CharField(max_length = 10, choices = ESTADO_CHOICES) 
-    nombreAlbergue = models.CharField(max_length = 60, null = True, blank = True)
-    contactoAlbergue = models.PositiveIntegerField()
-    ubicacionAlbergue = models.CharField(max_length = 120, null = True, blank = True)
+    #identificador = models.CharField(max_length = 10, choices = IDENTIFICADOR_CHOICES)
+    #tatuaje = models.CharField(max_length = 60, null = True, blank = True)
+    #estado = models.CharField(max_length = 10, choices = ESTADO_CHOICES) 
+    #nombreAlbergue = models.CharField(max_length = 60, null = True, blank = True)
+    #contactoAlbergue = models.PositiveIntegerField(default = 0)
+    #ubicacionAlbergue = models.CharField(max_length = 120, null = True, blank = True)
     
     def __str__(self):
         return self.nombre
