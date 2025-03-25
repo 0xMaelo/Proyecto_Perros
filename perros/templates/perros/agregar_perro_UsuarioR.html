@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset = "UTF-8">
+	<meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+	<meta name = "description" content = "">
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+	<title >Agrega Perros Usuario Registrado</title>
+	<style>
+	    *{
+		margin: 0;
+		padding: 0;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', ;
+	    }
+	    .navbar{
+		margin: auto;
+		display: flex;
+		padding: 0.5rem 1.5rem;
+		background: #272459;
+		border-radius: 3rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	    }
+		
+	    .nav-enlaces{
+		margin: auto;
+		display: flex;
+		gap: 2rem;
+		font-size: 20px;
+	    }
+		
+	    .nav-enlace, .desplegable li{
+		list-style: none;
+		height: 100%;
+		padding: 0.5rem 1rem;
+		font-weight: 1000;
+		cursor: pointer;
+		margin: auto;
+	    }
+	    .desplegable{
+		position: absolute;
+		padding: 0.5rem 0;
+		margin: 0.5rem -0.5rem;
+		background: #8a6ff0;
+		color: #fff;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		border-radius: 0.5rem;
+		font-size: 18px;
+		display: none;
+	    }
+		
+	    .nav-enlace:hover{
+		background-color: #8a6ff0;
+		color: #fff;
+		border-radius: 0.5rem;
+	    }
+		
+	    .secciones:hover .desplegable{
+		display: block;
+	    }
+		
+	    .secciones a{
+		margin: auto;
+		display: flex;
+		color: #fff;
+	    }
+		
+	    .secciones:hover .dropdown-icon{
+		font-size: 20px;
+		position; relative;
+		right: -5px;
+		transform: rotate(0deg);
+		transition: 0.3s ease-in-out all;
+	    }
+		
+	    .secciones:hover .dropdown-icon{
+		transform: rotate(180deg);
+	    }
+		
+	    .desplegable li:hover{
+		background: #000;
+		color: #fff;
+		border-radius: 0.5rem;
+	    }
+		
+	    .seccion1{
+		text-align: center;
+		font-size: 20px;
+		margin-top: 10px;
+	    }
+	    .button {
+         	display: inline-block;
+         	background-color: #5A3CE8;
+         	color: white;
+         	padding: 20px 30px;
+         	margin: 10px 0;
+         	border: none;
+         	border-radius: 2.8vh;
+         	cursor: pointer;
+         	text-decoration: none;
+         	font-size: 24px;
+         	font-weight: 1000;
+         	text-align: center;
+            }
+            .checkboxeados{
+            	text-align: center;
+            	background-color: #00AABB;
+            	margin-left: 75px;
+            	color: #FFDE59;
+            	font-weight: bold;
+            	display: flex;
+            }
+		
+	    #logo{
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: auto;
+		margin-bottom: auto;
+		display: flex;
+		width: 10vh;
+		height: 10vh;
+		border-radius: 3rem;
+	    }
+		
+	    #proyecto_nombre{
+		margin-right: 100px;
+		margin-left: auto;
+		margin-top: auto;
+		margin-bottom: auto;
+		display: flex;
+		color: #fff;
+		font-size: 23px;
+		font-weight: 1000;
+	    }
+		
+	    #perfil{
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: auto;
+		margin-bottom: auto;
+		width: 10vh;
+		height: 10vh;
+		border-radius: 3rem;
+		display:flex;
+	    }
+	    #encabezado{
+	        /*display: flex;
+	    	flex-wrap: wrap;
+	    	flex-direction: column;
+	        background-color: #AFAFAF;
+	        text-align: center;*/
+	        display: flex;
+		margin: auto;
+		font-size: 14px;
+		height: 25vh;
+		background: #d8d8d8;
+	    }
+	    #formulario{
+	    	display: flex;
+	    	flex-wrap: wrap;
+	    	flex-direction: column;
+	    	max-width: 700px;
+	    	background-color: #B5A9FF;
+	    	color: #333;
+	    	text-align: center;
+	    	margin-left: 50vh;
+	    	margin-right: 20vh;
+	    	margin-top: 13vh;
+	    	border-radius: 2rem;
+	    	font-weight: bold;
+	    }
+	    #REGISTRAR{
+            	background-color: #5E17EB;
+            	color: #FFF;
+            	margin-right: 14px;
+            	margin-top: 3vh;
+            	font-size: 30px;
+            	font-weight: bold;
+            	width: 80vh;
+            	margin-bottom: 5vh;
+            }
+	    input, select, textarea{
+		background-color: #FFFFFF;
+		border-radius: 1rem;
+		padding: 0.5rem 0.5rem;
+		position: relative;
+		left: 2vh;
+		/*top: 6vh;*/
+	    }
+	    a{
+		text-decoration: none;
+		color: currentColor;
+	    }
+	    table{
+	        padding : 1.5rem 0.5rem;
+	        margin-left: 4vh;
+	        margin-right: 8vh;
+	    }
+	    table td{
+	        padding : 0.5rem 0.5rem;
+	    }
+	</style>
+    </head>
+    <body>
+	<div id = "encabezado">
+	    <nav class = "navbar">
+		<ul class = "nav-enlaces">
+		    <img src="/media/perros_fotos/1.jpg" alt="Foto de pepe" id="logo"><p id = "proyecto_nombre">Patitas a casa</p></img>
+		    <li class = "nav-enlace secciones">
+			<a href = "{% url 'perros:home' %}">Principal</a>
+			<ul class = "desplegable">
+			    <li>Albergues cercanos</li>
+			    <li>Mapa de reportes</li>
+			</ul>
+		    </li>
+		    <li class = "nav-enlace secciones">
+			<a href = "#">About</a>
+			<ul class = "desplegable">
+			    <li>Blog</li>
+			    <li>Docs</li>
+			    <li>Quienes somos?</li>
+			</ul>
+		    </li>
+		    <li class = "nav-enlace secciones">
+			<a href = "#">Adoptar</a>
+		    </li>
+		    <li class = "nav-enlace secciones">
+			<a href = "{% url 'perros:agregar_perro' %}">Reportar</a>
+			<ul class = "desplegable">
+			    <li>Perdido</li>
+			    <li>Avistamiento</li>
+			</ul>
+		    </li>
+		    <a href = "#"><img src="/media/perfil5.png" alt="Usuario" id="perfil"></img></a>
+		</ul>
+	    </nav>
+	</div>
+	<div id = "formulario">
+	    <h3>----</h3>
+	    <form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		
+		{{ form.non_field_errors }}
+		
+		<label for="{{ form.foto.id_for_label }}">Fotos:</label>
+        	<input type="file" name="fotos" accept="image/*" id="id_foto" multiple>
+        	{{ form.foto.errors }}
+		<table>
+		    <tr>
+			<td><label for="{{ form.raza.id_for_label }}">Raza:</label>
+			    {{ form.raza }}
+			    {{ form.raza.errors }}
+        		    <datalist id="razas">
+        		        {% for raza in razas %}
+                		    <option value="{{ raza }}">
+            			{% endfor %}
+        		    </datalist>
+			</td>
+			<td><label for="{{ form.sexo.id_for_label }}">Sexo:</label>
+			    {{ form.sexo }}
+        		    {{ form.sexo.errors }}
+        		</td>
+		    </tr>
+		    <tr>
+			<td><label for="{{ form.tamano.id_for_label }}">Tamaño:</label>
+        		    {{ form.tamano }}
+        		    {{ form.tamano.errors }}
+        		</td>
+			<td><label for="{{ form.color.id_for_label }}">Color:</label>
+        		    {{ form.color }}
+        		    {{ form.color.errors }}
+        		</td>
+		    </tr>
+		</table>
+		<!--
+		<label for = "{{ form.identificador.id_for_label }}">Identificador: </label>
+		    {{ form.identificador }}
+		    {{ form.identificador.errors }}
+		<div id="ruac-clave-field" style="display: none;">
+		<label for = "{{ form.ruac_clave.id_for_label }}">Introduzca el RUAC del perro</label>
+            	    {{ form.ruac_clave }}
+            	    {{ form.ruac_clave.errors }}
+        	</div>
+		<div id="tatuaje-field" style="display: none;">
+        	<label for = "{{ form.tatuaje.id_for_label }}">Describa el tatuaje: </label>
+		    {{ form.tatuaje }}
+		    {{ form.tatuaje.errors }}
+		</div>
+		-->
+		<table>
+		    <tr>
+			<td><label for = "{{ form.estado.id_for_label }}">Edo del perro: </label>
+			    {{ form.estado }}
+			    {{ form.estado.errors }}
+			</td>
+			<td><label for="{{ form.fecha_perdido.id_for_label }}">Fecha:</label>
+			    {{ form.fecha_perdido }}
+        		    {{ form.fecha_perdido.errors }}
+        		</td>
+		    </tr>
+		    <tr>
+			<td><label for="{{ form.descripcion.id_for_label }}">Descripción breve del perro:</label>
+        		    {{ form.descripcion }}
+        		    {{ form.descripcion.errors }}
+        		</td>
+		    </tr>
+		</table>
+		<p>Cuadro de vacunación</p>
+            	<table class = "checkboxeados">
+                <tr>
+                   <td><label for = "{{ form.puppy.id_for_label }}">Puppy</label>
+                       {{ form.puppy }}
+                       {{ form.puppy.errors }}
+                   </td>
+                   <td><label for = "{{ form.rabia.id_for_label }}">Rabia</label> 
+                       {{ form.rabia }}
+                       {{ form.rabia.errors }}
+                   </td>
+                   <td><label for = "{{ form.parvovirus_vacuna.id_for_label }}">Parvovirus</label>
+                       {{ form.parvovirus_vacuna }}
+                       {{ form.parvovirus_vacuna.errors }}
+                   </td>
+                   <td><label for = "{{ form.giardia.id_for_label }}">Giardia</label> 
+                       {{ form.giardia }}
+                       {{ form.giardia.errors }}
+                   </td>
+                </tr>
+                <tr>
+                   <td><label for = "{{ form.cuadruple.id_for_label }}">Cuadruple</label>
+                       {{ form.cuadruple }}
+                       {{ form.cuadruple.errors }}
+                   </td>
+                   <td><label for = "{{ form.quintuple.id_for_label }}">Quintuple</label> 
+                       {{ form.quintuple }}
+                       {{ form.quintuple.errors }}
+                   </td>
+                   <td><label for = "{{ form.sextuple.id_for_label }}">Sextuple</label>
+                       {{ form.sextuple }}
+                       {{ form.sextuple.errors }}
+                   </td>
+                   <td><label for = "{{ form.bordetella.id_for_label }}">Bordetella</label> 
+                       {{ form.bordetella }}
+                       {{ form.bordetella.errors }}
+                   </td>
+                </tr>
+            	</table>
+        
+        	<p>Plaga o enfermedad</p>
+        	<table class = "checkboxeados">
+        	<tr>
+        	    <td><label for = "{{ form.pulgas.id_for_label }}">Pulgas</label>
+        	        {{ form.pulgas }}
+        	        {{ form.pulgas.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.displasia_cadera.id_for_label }}">Displasia de Cadera</label>
+        	        {{ form.displasia_cadera }}
+        	        {{ form.displasia_cadera.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.nematodos.id_for_label }}">Nematodos</label> <p>(lombrices intestinales)</p>
+        	        {{ form.nematodos }}
+        	        {{ form.nematodos.errors }}
+        	    </td>
+        	</tr>
+        	<tr>
+        	    <td><label for = "{{ form.cestodos.id_for_label }}">Cestodos</label>
+        	        {{ form.cestodos }}
+        	        {{ form.cestodos.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.giardas_coccidios.id_for_label }}">Giardias</label><p> o Coccidios</p>
+        	        {{ form.giardas_coccidios }}
+        	        {{ form.giardas_coccidios.errors }}
+        	    </td>
+        	    <td><label for = "{{ form.parvovirus_enfermo.id_for_label }}">Parvovirus</label>
+        	        {{ form.parvovirus_enfermo }}
+        	        {{ form.parvovirus_enfermo.errors }}
+        	    </td>
+        	</tr>
+        	</table>
+		
+	    	<input type="submit" value="Enviar" id = "REGISTRAR">
+	    </form>	
+	</div>
+	<h4>PRIMERO</h4>
+	<script>
+/*	    document.getElementById('{{ form.identificador.id_for_label }}').addEventListener('change', function() {
+                let ruacClaveField = document.getElementById('ruac-clave-field');
+                let tatuajeField = document.getElementById('tatuaje-field');
+                if(this.value === 'ruac'){
+                   ruacClaveField.style.display = 'block';
+                   tatuajeField.style.display = 'none';
+                } 
+                if(this.value === 'microchip'){
+                   ruacClaveField.style.display = 'none';
+                   tatuajeField.style.display = 'none';
+                } 
+                if(this.value === 'tatuaje'){
+                   tatuajeField.style.display = 'block';
+                   ruacClaveField.style.display = 'none';
+                } 
+                if(this.value === 'no') {
+                   ruacClaveField.style.display = 'none';
+                   tatuajeField.style.display = 'none';
+                }
+           });
+            window.onload = function() {
+                let identificadorSelection = document.getElementById('{{ form.identificador.id_for_label }}');
+                let ruacClaveField = document.getElementById('ruac-clave-field');
+                let tatuajeField = document.getElementById('tatuaje-field');
+                if(identificadorSelection.value === 'ruac'){
+                   ruacClaveField.style.display = 'block';
+                   tatuajeField.style.display = 'none';
+                } 
+                else if(identificadorSelection.value === 'microchip'){
+                   ruacClaveField.style.display = 'none';
+                   tatuajeField.style.display = 'none';
+                } 
+                else if(identificadorSelection.value === 'tatuaje'){
+                   tatuajeField.style.display = 'block';
+                   ruacClaveField.style.display = 'none';
+                }
+            }*/
+	</script>
+    </body>
+</html>
