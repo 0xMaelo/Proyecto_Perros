@@ -12,25 +12,29 @@ def lista_perros(request):
     return render(request, 'perros/lista_perros.html', {'perros': perros})
 
 def agregar_perro(request):
+    print(request.method)
     if request.method == 'POST':
+        print("aqui ando")
         form = PerroForm(request.POST, request.FILES)
+        print(form.is_valid())
         if form.is_valid():
             try:
                 with transaction.atomic():
                     perro = form.save(commit=False)
                     if perro.collar == 'no':
                         perro.color_collar = None
-                    if perro.microchip == 'no':
-                        perro.microchip_num = None
+                    #if perro.microchip == 'no':
+                    #    perro.microchip_num = None
                     if perro.ruac == 'no':
                         perro.ruac_clave = None
-                        
+      			                  
                     perro.save()
                 return redirect('perros:lista_perros')
             except Exception as e:
                 print(f"Error al guardar: {e}")
     else:
         form = PerroForm()
+        print("asu")
     
     context = {
         'form': form,
@@ -46,8 +50,8 @@ def editar_perro(request, pk):
             perro = form.save(commit=False)
             if perro.collar == 'no':
                 perro.color_collar = None
-            if perro.microchip == 'no':
-            	perro.microchip_num = None
+            #if perro.microchip == 'no':
+            #	perro.microchip_num = None
             if perro.ruac == 'no':
             	perro.ruac_clave = None
             	
@@ -86,8 +90,8 @@ def agregar_perro_albergue(request):
     	            perro = form.save(commit=False)
     	            if perro.collar == 'no':
     	            	perro.color_collar = None
-    	            if perro.microchip == 'no':
-    	            	perro.microchip_num = None
+    	            #if perro.microchip == 'no':
+    	            #	perro.microchip_num = None
     	            if perro.ruac == 'no':
     	            	perro.ruac_clave = None
     	        
