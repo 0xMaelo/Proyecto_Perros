@@ -19,7 +19,9 @@ class PerroForm(forms.ModelForm):
     
     class Meta:
         model = Perro
-        fields = ['nombre', 'raza', 'tamano', 'sexo', 'color', 'tipo_pelo', 'collar', 'color_collar', 'foto', 'descripcion', 'fecha_perdido', 'ultima_calle', 'ultima_colonia', 'ultima_alcaldia', 'ultima_latitud', 'ultima_longitud', 'microchip', 'microchip_num', 'ruac', 'ruac_clave', 'puppy', 'rabia', 'parvovirus_vacuna', 'giardia', 'cuadruple', 'quintuple', 'sextuple', 'bordetella', 'pulgas', 'displasia_cadera', 'nematodos', 'cestodos', 'giardas_coccidios', 'parvovirus_enfermo', 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']
+        fields = ['nombre', 'raza', 'tamano', 'sexo', 'color', 'tipo_pelo', 'collar', 'color_collar', 'foto', 'descripcion', 'fecha_perdido', 'ultima_calle', 'ultima_colonia', 'ultima_alcaldia', 'ultima_latitud', 'ultima_longitud', 'ruac', 'ruac_clave', 'puppy', 'rabia', 'parvovirus_vacuna', 'giardia', 'cuadruple', 'quintuple', 'sextuple', 'bordetella', 'pulgas', 'displasia_cadera', 'nematodos', 'cestodos', 'giardas_coccidios', 'parvovirus_enfermo']
+        #, 'microchip', 'microchip_num']
+        #""", 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']"""
 
         
     def __init__(self, *args, **kwargs):
