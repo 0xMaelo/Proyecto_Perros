@@ -241,8 +241,13 @@
 		
 		{{ form.non_field_errors }}
 		
+		<label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+		{{ form.nombre }}
+		{{ form.nombre.errors }}
+		<br>
+		<br>
 		<label for="{{ form.foto.id_for_label }}">Fotos:</label>
-        	<input type="file" name="fotos" accept="image/*" id="id_foto" multiple>
+        	<input type="file" name="foto" accept="image/*" id="id_foto" multiple>
         	{{ form.foto.errors }}
 		<table>
 		    <tr>
@@ -271,7 +276,8 @@
         		</td>
 		    </tr>
 		</table>
-		<!--
+		
+		
 		<label for = "{{ form.identificador.id_for_label }}">Identificador: </label>
 		    {{ form.identificador }}
 		    {{ form.identificador.errors }}
@@ -285,7 +291,7 @@
 		    {{ form.tatuaje }}
 		    {{ form.tatuaje.errors }}
 		</div>
-		-->
+		
 		<table>
 		    <tr>
 			<td><label for = "{{ form.estado.id_for_label }}">Edo del perro: </label>
@@ -301,6 +307,10 @@
 			<td><label for="{{ form.descripcion.id_for_label }}">Descripción breve del perro:</label>
         		    {{ form.descripcion }}
         		    {{ form.descripcion.errors }}
+        		</td>
+        		<td><label for = "{{ form.tipo_pelo.id_for_label }}">Tipo de pelo:</label>
+			    {{ form.tipo_pelo }}
+        		    {{ form.tipo_pelo.errors }}
         		</td>
 		    </tr>
 		</table>
@@ -381,7 +391,7 @@
 	</div>
 	<h4>PRIMERO</h4>
 	<script>
-/*	    document.getElementById('{{ form.identificador.id_for_label }}').addEventListener('change', function() {
+	    document.getElementById('{{ form.identificador.id_for_label }}').addEventListener('change', function() {
                 let ruacClaveField = document.getElementById('ruac-clave-field');
                 let tatuajeField = document.getElementById('tatuaje-field');
                 if(this.value === 'ruac'){
@@ -396,7 +406,7 @@
                    tatuajeField.style.display = 'block';
                    ruacClaveField.style.display = 'none';
                 } 
-                if(this.value === 'no') {
+                if(this.value === 'no' || this.value === "") {
                    ruacClaveField.style.display = 'none';
                    tatuajeField.style.display = 'none';
                 }
@@ -409,15 +419,15 @@
                    ruacClaveField.style.display = 'block';
                    tatuajeField.style.display = 'none';
                 } 
-                else if(identificadorSelection.value === 'microchip'){
-                   ruacClaveField.style.display = 'none';
-                   tatuajeField.style.display = 'none';
-                } 
+                //else if(identificadorSelection.value === 'microchip'){
+                //   ruacClaveField.style.display = 'none';
+                //   tatuajeField.style.display = 'none';
+                //} 
                 else if(identificadorSelection.value === 'tatuaje'){
                    tatuajeField.style.display = 'block';
                    ruacClaveField.style.display = 'none';
                 }
-            }*/
+            }
 	</script>
     </body>
 </html>
