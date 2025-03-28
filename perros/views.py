@@ -84,12 +84,13 @@ def prueba(request):
 def agregar_perro_albergue(request):
     if request.method == 'POST':
     	form = AlbergueForm(request.POST, request.FILES, request.FILES.getlist('fotos'))
+    	print("el formulario es valido? : {:}".format(form.is_valid()))
     	if form.is_valid():
     	    try:
     	        with transaction.atomic():
     	            perro = form.save(commit=False)
-    	            if perro.collar == 'no':
-    	            	perro.color_collar = None
+    	            #if perro.collar == 'no':
+    	            #	perro.color_collar = None
     	            #if perro.microchip == 'no':
     	            #	perro.microchip_num = None
     	            if perro.ruac == 'no':
@@ -100,7 +101,7 @@ def agregar_perro_albergue(request):
     	    except Exception as e:
     	    	print(f"Error al guardar: {e}")
     else:
-    	form = PerroForm()
+    	form = AlbergueForm()
     
     context = {
         'form': form,
@@ -110,14 +111,14 @@ def agregar_perro_albergue(request):
 
 def agregar_perro_UsuarioR(request):
     if request.method == 'POST':
-    	form = UsarioRForm(request.POST, request.FILES, request.FILES.getlist('fotos'))
+    	form = UsarioRForm(request.POST, request.FILES, request.FILES.getlist('foto'))
     	print(form.is_valid())
     	if form.is_valid():
     	    try:
     	        with transaction.atomic():
     	            perro = form.save(commit=False)
-    	            if perro.collar == 'no':
-    	            	perro.color_collar = None
+    	            #if perro.collar == 'no':
+    	            #	perro.color_collar = None
     	            #if perro.microchip == 'no':
     	            #	perro.microchip_num = None
     	            if perro.ruac == 'no':
@@ -128,7 +129,7 @@ def agregar_perro_UsuarioR(request):
     	    except Exception as e:
     	    	print(f"Error al guardar: {e}")
     else:
-    	form = PerroForm()
+    	form = UsarioRForm()
     
     context = {
         'form': form,

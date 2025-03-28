@@ -48,7 +48,7 @@ class AlbergueForm(forms.ModelForm):
     
     class Meta:
         model = Perro
-        fields = ['nombre', 'raza', 'tamano', 'sexo', 'color', 'tipo_pelo', 'foto', 'descripcion', 'fecha_perdido', 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue', 'ruac_clave']
+        fields = ['nombre', 'foto', 'raza', 'sexo', 'tamano', 'color', 'identificador', 'ruac_clave', 'tatuaje', 'estado', 'fecha_perdido', 'descripcion', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']
         #, 'microchip', 'microchip_num']
         #""", 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']"""
 
@@ -71,7 +71,7 @@ class UsarioRForm(forms.ModelForm):
     
     class Meta:
         model = Perro
-        fields = ['nombre', 'raza', 'tamano', 'sexo', 'color', 'tipo_pelo', 'foto', 'descripcion', 'fecha_perdido', 'identificador', 'tatuaje', 'estado',  'ruac_clave', 'puppy', 'rabia', 'parvovirus_vacuna', 'giardia', 'cuadruple', 'quintuple', 'sextuple', 'bordetella', 'pulgas', 'displasia_cadera', 'nematodos', 'cestodos', 'giardas_coccidios', 'parvovirus_enfermo']
+        fields = ['nombre', 'foto', 'raza', 'sexo', 'tamano', 'color', 'tipo_pelo', 'identificador',  'ruac_clave', 'tatuaje', 'estado', 'fecha_perdido', 'descripcion', 'puppy', 'rabia', 'parvovirus_vacuna', 'giardia', 'cuadruple', 'quintuple', 'sextuple', 'bordetella', 'pulgas', 'displasia_cadera', 'nematodos', 'cestodos', 'giardas_coccidios', 'parvovirus_enfermo']
         #, 'microchip', 'microchip_num']
         #""", 'identificador', 'tatuaje', 'estado', 'nombreAlbergue', 'contactoAlbergue', 'ubicacionAlbergue']"""
 
