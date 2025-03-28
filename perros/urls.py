@@ -12,4 +12,10 @@ urlpatterns = [
     path('prueba/', views.prueba, name='prueba'),
     path('agregar_perro_albergue/', views.agregar_perro_albergue, name = 'agregar_perro_albergue'),
     path('agregar_perro_UsuarioR/', views.agregar_perro_UsuarioR, name = 'agregar_perro_UsuarioR'),
+    path('registra_usuario/', views.registra_usuario, name = 'registra_usuario'),
+    path('perros/registra_usuario/', views.registra_usuario, name = 'registra_usuario'),
+    path('loggin_usuario/', views.loggin_usuario, name = 'loggin_usuario'),
+    path('perros/loggin_usuario/', views.loggin_usuario, name = 'loggin_usuario'),
+    path('logout_usuario/', views.logout_usuario, name = 'logout_usuario'),
+    path('perros/logout_usuario/', views.logout_usuario, name = 'logout_usuario'),
 ]

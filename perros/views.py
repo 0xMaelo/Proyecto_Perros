@@ -1,8 +1,46 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db import transaction
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Perro
 from .forms import PerroForm, RAZAS_PERROS, UsarioRForm, AlbergueForm
-from django.db import transaction
 
+
+def loggin_usuario(request):
+    if request.method == "POST":
+        form = AuthenticationForm(data = request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            return redirect("perros:prueba")
+        
+    else:
+        form = AuthenticationForm()
+	
+    context = {
+        'form': form,
+    }
+    return render(request, "perros/loggin_usuario.html", context)
+    
+
+def registra_usuario(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        print(form.is_valid())
+        if form.is_valid():
+            login(request, form.save())
+            return redirect("perros:prueba")
+    else:
+        form = UserCreationForm()
+        print("asumakina")
+    context = {
+        'form': form,
+    }
+    return render(request, "perros/registra_usuario.html", context)
+
+def logout_usuario(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect("perros:prueba")
 
 def home(request):
     return render(request, 'perros/home.html')
